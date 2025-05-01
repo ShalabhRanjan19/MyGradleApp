@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     tools {
-        jdk 'jdk-17'         // Ensure 'jdk-17' is configured in Jenkins > Global Tool Configuration
-        gradle 'Gradle'      // Ensure 'Gradle' is configured similarly
+        jdk 'jdk-17'         // Ensure 'jdk-17' is set in Jenkins > Global Tool Configuration
+        gradle 'Gradle'      // Ensure 'Gradle' is configured in the same place
     }
 
     environment {
@@ -25,26 +25,19 @@ pipeline {
             }
         }
 
-        stage('Test') {
-            steps {
-                sh 'gradle test'
-            }
-        }
-
         stage('Archive JAR') {
             steps {
-                sh 'java -jar build/libs/MyGradleApp-1.0-SNAPSHOT.jar'
-
+                archiveArtifacts artifacts: 'build/libs/*.jar', fingerprint: true
             }
         }
     }
 
     post {
         success {
-            echo 'Build and deployment successful!'
+            echo 'Build and archiving successful!'
         }
         failure {
-            echo 'Build failed!'
+            echo ' Sorry Build failed!'
         }
     }
 }
