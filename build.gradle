@@ -13,7 +13,7 @@ dependencies {
 }
 
 application {
-    mainClass = 'App'
+    mainClassName = 'App'  // Use fully qualified name if in a package
 }
 
 task display {
