@@ -33,7 +33,7 @@ pipeline {
 
         stage('Archive JAR') {
             steps {
-                sh 'java -jar build/libs/MyMavenToGradle-1.0-SNAPSHOT.jar'
+                sh 'java -jar build/libs/MyGradleApp-1.0-SNAPSHOT.jar'
 
             }
         }
