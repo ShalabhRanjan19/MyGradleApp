@@ -1,7 +1,5 @@
-plugins {
-    id 'java'
-    id 'application'
-}
+apply plugin: 'java'
+apply plugin: 'application'
 
 repositories {
     mavenCentral()
@@ -12,9 +10,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
 }
 
-application {
-    mainClassName = 'App'  // Use fully qualified name if in a package
-}
+mainClassName = 'App'  // Use full class path if in a package
 
 task display {
     doLast {
